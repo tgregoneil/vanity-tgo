@@ -1,5 +1,5 @@
 <?php
-require_once 'library/user.php';
+require_once 'library/User.php';
 
 include 'includes/header.php';
 ?>

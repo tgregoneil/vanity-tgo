@@ -5,8 +5,8 @@
 // twice. store their username, password, and email address in the database. log them in
 // automatically and send them to the main page
 
-require_once 'library/util.php';
-require_once 'library/user.php';
+require_once 'library/Util.php';
+require_once 'library/User.php';
 
 if ($_POST) {
     

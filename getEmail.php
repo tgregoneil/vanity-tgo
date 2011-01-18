@@ -1,8 +1,8 @@
 <?php
 // Validates that an email address follows the syntax: x@y.z for the signup process
 
-require_once 'library/util.php';
-require_once 'library/user.php';
+require_once 'library/Util.php';
+require_once 'library/User.php';
 
 if ($_POST) {
     
@@ -12,7 +12,7 @@ if ($_POST) {
         createUser($_SESSION['new_username'], $_SESSION['password'], $email);
 
         loginNewUser($_SESSION['new_username']);
-        redirect('/beginning-php/vanity/');
+        redirect('/beginning-php/vanity-tgo/');
     } else {
         $error_message = "'$email' is not a valid email address format:  x@y.z";
     }

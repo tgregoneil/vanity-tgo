@@ -1,8 +1,8 @@
 <?php
 // Make the user confirm the desired password, else repeat with an error message
 
-require_once 'library/util.php';
-require_once 'library/user.php';
+require_once 'library/Util.php';
+require_once 'library/User.php';
 
 if ($_POST) {
     

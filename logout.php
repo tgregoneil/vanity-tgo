@@ -1,5 +1,5 @@
 <?php
-require_once 'library/util.php';
-require_once 'library/user.php';
+require_once 'library/Util.php';
+require_once 'library/User.php';
 session_destroy();
-redirect('/beginning-php/vanity/');
+redirect('/beginning-php/vanity-tgo/');

@@ -1,11 +1,11 @@
 <?php
-require_once 'library/util.php';
-require_once 'library/user.php';
+require_once 'library/Util.php';
+require_once 'library/User.php';
 
 if ($_POST) {
     
     if (authenticate($_POST['username'], $_POST['password'])) {
-        redirect('/beginning-php/vanity/');
+        redirect('/beginning-php/vanity-tgo/');
     } else {
         $error_message = 'Invalid username or password';
     }

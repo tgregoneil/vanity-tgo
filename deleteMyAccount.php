@@ -4,8 +4,8 @@
 // acknowleding that they want to delete their account. if the username and password are correct
 // remove their account from the database and redirect them to the homepage. otherwise show an error
 
-require_once 'library/util.php';
-require_once 'library/user.php';
+require_once 'library/Util.php';
+require_once 'library/User.php';
 
 if ($_POST) {
     
@@ -14,7 +14,7 @@ if ($_POST) {
             deleteUser ($_POST['username']);
 	  //logout();
             session_destroy();
-            redirect('/beginning-php/vanity/');
+            redirect('/beginning-php/vanity-tgo/');
         } else {
             $error_message = 'Invalid username or password';
         }
@@ -27,9 +27,9 @@ if ($_POST) {
 
 include 'includes/header.php';
 ?>
-<?if ($error_message) {?>
-    <p style="color: red"><?=$error_message?></p>
-<?}?>
+<?if ($error_message) {
+?> <p style="color: red"><?=$error_message?></p> <?
+}?>
 <form method="POST" action="deleteMyAccount.php">
     <label>Confirm username to DELETE</label>
     <input type="text" name="username"/>
