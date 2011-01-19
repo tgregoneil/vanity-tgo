@@ -9,7 +9,7 @@ class User
     public function authenticate()
     {
         if ($this->password && $this->username) {
-		    // assumes init() or getInstance() with valid pdoConnectionString have been invoked:
+            // assumes init() or getInstance() with valid pdoConnectionString have been invoked:
             $db = Database::getInstance();
             $sql = "SELECT *
                     FROM users

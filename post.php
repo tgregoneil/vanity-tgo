@@ -10,7 +10,7 @@ if ($_POST) {
 
     $sql = "INSERT into posts
             (user_id, post, created_at)
-	  VALUES ('$userId', '$post', '$createAt')" ;
+            VALUES ('$userId', '$post', '$createAt')" ;
     $result = $db->query($sql);
 
     if ($result) {
