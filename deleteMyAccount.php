@@ -12,8 +12,7 @@ if ($_POST) {
     if ($_POST['confcheck']) {
         if (authenticate($_POST['username'], $_POST['password'])) {
             deleteUser ($_POST['username']);
-      //logout();
-            session_destroy();
+            User::logout();
             redirect('/beginning-php/vanity-tgo/');
         } else {
             $error_message = 'Invalid username or password';
