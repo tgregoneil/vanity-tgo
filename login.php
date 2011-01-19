@@ -1,11 +1,14 @@
 <?php
-require_once 'library/Util.php';
-require_once 'library/User.php';
+require_once 'bootstrap.php';
 
 if ($_POST) {
     
-    if (authenticate($_POST['username'], $_POST['password'])) {
-        redirect('/beginning-php/vanity-tgo/');
+    $user = new User();
+    $user->username = $_POST['username'];
+    $user->setPassword($_POST['password']);
+    
+    if ($user->authenticate()) {
+        Util::redirect('/beginning-php/vanity-tgo/');
     } else {
         $error_message = 'Invalid username or password';
     }
@@ -24,7 +27,5 @@ include 'includes/header.php';
     <input type="password" name="password"/>
     <input type="submit"/>
 </form>
- 
- 
  
 <?php include 'includes/footer.php'?>

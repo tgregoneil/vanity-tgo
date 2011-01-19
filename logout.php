@@ -1,5 +1,7 @@
 <?php
-require_once 'library/Util.php';
-require_once 'library/User.php';
-session_destroy();
-redirect('/beginning-php/vanity-tgo/');
+require_once 'bootstrap.php';
+User::logout();
+Util::redirect('/beginning-php/vanity-tgo/');
+
+?>
+

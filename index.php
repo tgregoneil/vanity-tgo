@@ -1,10 +1,10 @@
 <?php
-require_once 'library/User.php';
+require_once 'bootstrap.php';
 
 include 'includes/header.php';
 ?>
 
-<?if (loggedIn()) {?>
+<?if (User::loggedIn()) {?>
 <a href="logout.php">Logout</a>
 <a href="deleteMyAccount.php">Delete your account?</a>
 <?} else{?>
