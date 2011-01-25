@@ -3,11 +3,9 @@ require_once 'bootstrap.php';
 
 if ($_POST) {
     
-    $user = new User();
-    $user->username = $_POST['username'];
-    $user->setPassword($_POST['password']);
+    $user = User::getBy('username', $_POST['username']);
     
-    if ($user->authenticate()) {
+    if ($user->authenticate($_POST['password'])) {
         Util::redirect('/beginning-php/vanity-tgo/');
     } else {
         $error_message = 'Invalid username or password';

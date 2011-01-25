@@ -1,21 +1,15 @@
 <?php
-// HOMEWORK
-// create a page where a new user can register for your application. collect from them
-// a username, a password, and an email address. require them to type their password in
-// twice. store their username, password, and email address in the database. log them in
-// automatically and send them to the main page
-
-require_once 'library/Util.php';
-require_once 'library/User.php';
+require_once 'bootstrap.php';
 
 if ($_POST) {
     
     $username = $_POST['username'];
 
-    if (isAvailableUsername($username)) {
-        redirect('choosePassword.php');
-    } else {
+    if (User::getBy('username', $username)) {
         $error_message = "Username: $username has already been taken. Please choose another.";
+    } else {
+        $_SESSION['new_username'] = $username;  // new_username used until account is actually created
+        Util::redirect('choosePassword.php');
     }
 }
 

@@ -7,11 +7,13 @@ class Database
     
     public static function init($pdoConnectionString)
     {
+//print_r("Database::init pdoConnectionString = $pdoConnectionString<br>");
         self::$_instance = new Database($pdoConnectionString);
     }
     
     public static function getInstance($pdoConnectionString = null)
     {
+//print_r("Database::getInstance pdoConnectionString = $pdoConnectionString<br>");
         if (!self::$_instance && $pdoConnectionString) {
             self::init($pdoConnectionString);
             return self::$_instance;
@@ -23,6 +25,7 @@ class Database
     
     private function __construct($pdoConnectionString)
     {
+//print_r("Database::__construct pdoConnectionString = $pdoConnectionString<br>");
         if ($pdoConnectionString) {
             $this->_pdo = new PDO($pdoConnectionString);
         }
@@ -30,12 +33,14 @@ class Database
     
     public function query($sql, $params)
     {
+//print_r("Database::query sql = $sql <br>   params = $params<br>");
         if (!is_array($params)) {
             $params = array($params);
         }
         $statement = $this->_pdo->prepare($sql);
         $successful = $statement->execute($params);
         if (!$successful) {
+//print_r("Database::query Not successful<br>");
             return array();
         }
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -77,3 +82,4 @@ class Database
         return $this->_lastStatement->rowCount();
     }
 }
+?>

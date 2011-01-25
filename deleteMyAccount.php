@@ -4,18 +4,18 @@
 // acknowleding that they want to delete their account. if the username and password are correct
 // remove their account from the database and redirect them to the homepage. otherwise show an error
 
-require_once 'library/Util.php';
-require_once 'library/User.php';
+require_once 'bootstrap.php';
 
 if ($_POST) {
     
     if ($_POST['confcheck']) {
-        if (authenticate($_POST['username'], $_POST['password'])) {
-            deleteUser ($_POST['username']);
-            User::logout();
-            redirect('/beginning-php/vanity-tgo/');
+	    $user = User::getLoggedInUser ();
+        if ($user->authenticate($_POST['password'])) {
+            $user->delete ($_SESSION['username']);
+            // logged out from User::delete()
+            Util::redirect('/beginning-php/vanity-tgo/');
         } else {
-            $error_message = 'Invalid username or password';
+            $error_message = 'Invalid password.  Try again.';
         }
     } else {
         $error_message = 'Please check "Confirm:" if you\'re serious about deleting your account.';
@@ -23,16 +23,17 @@ if ($_POST) {
     
 }
 
+if (User::getLoggedInUser () == null) {  // if not logged in, go home
+    Util::redirect('/beginning-php/vanity-tgo/');
+}
 
 include 'includes/header.php';
-?>
-<?if ($error_message) {
+
+if ($error_message) {
 ?> <p style="color: red"><?=$error_message?></p> <?
 }?>
 <form method="POST" action="deleteMyAccount.php">
-    <label>Confirm username to DELETE</label>
-    <input type="text" name="username"/>
-    <label>password</label>
+    <label>Confirm password to delete account:</label>
     <input type="password" name="password"/>
     <label>Confirm:</label>
     <input type="checkbox" name="confcheck"/>

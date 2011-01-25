@@ -6,5 +6,5 @@
 <body>
 <img src="images/vanity.png"/>
 <?if (User::loggedIn()){?>
-    Welcome, <?=User::getUsername()?>
+    Welcome, <?=User::getLoggedInUser()->username?>
 <?}?>

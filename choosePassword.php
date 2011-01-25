@@ -1,13 +1,13 @@
 <?php
 // Make the user confirm the desired password, else repeat with an error message
 
-require_once 'library/Util.php';
-require_once 'library/User.php';
+require_once 'bootstrap.php';
 
 if ($_POST) {
     
-    if (isConfirmedPassword($_POST['password'], $_POST['conf_password'])) {
-        redirect('getEmail.php');
+    if ($_POST['password'] == $_POST['conf_password']) {
+        $_SESSION['password'] = $_POST['password'];
+        Util::redirect('getEmail.php');
     } else {
         $error_message = 'Did not match.  Please try again.';
     }

@@ -1,18 +1,15 @@
 <?php
 // Validates that an email address follows the syntax: x@y.z for the signup process
 
-require_once 'library/Util.php';
-require_once 'library/User.php';
+require_once 'bootstrap.php';
 
 if ($_POST) {
     
     $email = $_POST['email'];
 
-    if (isValidEmailSyntax($email)) {
-        createUser($_SESSION['new_username'], $_SESSION['password'], $email);
-
-        loginNewUser($_SESSION['new_username']);
-        redirect('/beginning-php/vanity-tgo/');
+    if (User::isValidEmailSyntax($email)) {
+        User::create($_SESSION['new_username'], $email, $_SESSION['password']);
+        Util::redirect('/beginning-php/vanity-tgo/');
     } else {
         $error_message = "'$email' is not a valid email address format:  x@y.z";
     }
