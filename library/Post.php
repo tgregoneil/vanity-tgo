@@ -20,7 +20,7 @@ class Post
     public static function create($user_id, $content)
     {
         $sql = "INSERT INTO posts (`user_id`, `content`, `created_at`)
-        		VALUES (?, ?, ?)";
+                VALUES (?, ?, ?)";
         $db = Database::getInstance();
         $db->query($sql, array($user_id, $content, time()));
         if ($db->numRows()) {
@@ -38,9 +38,9 @@ class Post
     {
         $db = Database::getInstance();
         $sql = "SELECT * 
-        		FROM posts
-        		ORDER BY created_at DESC
-        		LIMIT ?";
+                FROM posts
+                ORDER BY created_at DESC
+                LIMIT ?";
         $results = $db->query($sql, $num);
         $postObjects = array();
         foreach ($results as $result) {

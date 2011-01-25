@@ -1,10 +1,10 @@
 <html>
 <head>
-    <title>Vanity</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<title>Vanity</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 </head>
 <body>
 <img src="images/vanity.png"/>
 <?if (User::loggedIn()){?>
-    Welcome, <?=User::getLoggedInUser()->username?>
+    Welcome, <?=User::getLoggedInUser()->username?>&nbsp;&nbsp;(<a href="createpost.php">Create a new post</a>)
 <?}?>

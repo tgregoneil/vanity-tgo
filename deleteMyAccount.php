@@ -9,7 +9,7 @@ require_once 'bootstrap.php';
 if ($_POST) {
     
     if ($_POST['confcheck']) {
-	    $user = User::getLoggedInUser ();
+        $user = User::getLoggedInUser ();
         if ($user->authenticate($_POST['password'])) {
             $user->delete ($_SESSION['username']);
             // logged out from User::delete()

@@ -13,8 +13,8 @@ class User
     public static function getBy($column, $value)
     {
         $sql = "SELECT *
-        		FROM users
-        		WHERE $column = ?";
+                FROM users
+                WHERE $column = ?";
         $db = Database::getInstance();
         $results = $db->queryOne($sql, $value);
         if ($results) {
@@ -27,14 +27,14 @@ class User
     {
 //print_r ("User::create  username=$username  email=$email  password=$password<br>");
         $sql = "INSERT INTO users (`username`, `email`, `password`)
-        		VALUES (?, ?, ?)";
+                VALUES (?, ?, ?)";
         $db = Database::getInstance();
         $salt = 'somerandomsomething';
         $hashPassword = sha1($password . "||" . $salt);
         $db->query($sql, array($username, $email, $hashPassword));
 $db->error();
         if ($db->numRows() === 1) {
-		    $_SESSION['username'] = $username;  // log user in after creating account
+            $_SESSION['username'] = $username;  // log user in after creating account
             return true;
         }
         return false;
@@ -55,8 +55,8 @@ $db->error();
     {
         $db = Database::getInstance();
         $sql = "SELECT *
-        		FROM posts
-        		WHERE user_id = ?";
+                FROM posts
+                WHERE user_id = ?";
         $results = $db->query($sql, $this->id);
         $postObjects = array();
         if ($results) {
@@ -73,12 +73,12 @@ $db->error();
     {
         $db = Database::getInstance();
         $sql = "DELETE FROM users
-        		WHERE id = ?";
+                WHERE id = ?";
         $db->query($sql, $this->id);
         if ($db->numRows() == 1) {
             User::logout();
             $sql = "DELETE FROM posts 
-            		WHERE user_id = ?";
+                    WHERE user_id = ?";
             $db->query($sql, $this->id);
             return true;
         }

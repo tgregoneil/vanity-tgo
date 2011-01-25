@@ -1,6 +1,6 @@
 <?php
 require_once 'bootstrap.php';
-
+$posts = Post::get();
 include 'includes/header.php';
 ?>
 
@@ -13,7 +13,6 @@ include 'includes/header.php';
 <a href="login.php">Login</a>
 <a href="signup.php">Want to join?</a>
 <?}
-$posts = Post::get();
 ?>
 
 <br clear="all">
