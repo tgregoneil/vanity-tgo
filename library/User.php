@@ -32,7 +32,7 @@ class User
         $salt = 'somerandomsomething';
         $hashPassword = sha1($password . "||" . $salt);
         $db->query($sql, array($username, $email, $hashPassword));
-$db->error();
+//$db->error();
         if ($db->numRows() === 1) {
             $_SESSION['username'] = $username;  // log user in after creating account
             return true;
