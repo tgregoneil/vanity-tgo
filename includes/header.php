@@ -6,5 +6,5 @@
 <body>
 <img src="images/vanity.png"/>
 <?if (User::loggedIn()){?>
-    Welcome, <?=User::getLoggedInUser()->username?>&nbsp;&nbsp;(<a href="createpost.php">Create a new post</a>)
+    Welcome, <?=User::getLoggedInUser()->username?>
 <?}?>

@@ -5,8 +5,8 @@ if ($_POST) {
     
     $user = User::getBy('username', $_POST['username']);
     
-    if ($user->authenticate($_POST['password'])) {
-        Util::redirect('/beginning-php/vanity-tgo/');
+    if ($user && $user->authenticate($_POST['password'])) {  // includes case of null user object
+        Util::redirect('/beginning-php/vanity-tgo/');        // when $user doesn't exist in database
     } else {
         $error_message = 'Invalid username or password';
     }
